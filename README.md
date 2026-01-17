@@ -1,36 +1,94 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Jira Clone
 
-## Getting Started
+A modern, full-stack project management application built with **Next.js 15**, **Prisma**, and **SQLite**. This application mimics the core functionality of Jira, featuring a drag-and-drop Kanban board, backlog management, and team collaboration tools.
 
-First, run the development server:
+![Project Status](https://img.shields.io/badge/status-active-success.svg)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+
+## ✨ Features
+
+- **Kanban Board**: Interactive drag-and-drop interface powered by `@dnd-kit` for managing tickets across statuses (To Do, In Progress, Done, etc.).
+- **Optimistic UI**: Instant user feedback for all board actions with background server synchronization.
+- **Task Management**: Create, edit, and update priority/status of tasks.
+- **Backlog View**: Comprehensive list view for searching and filtering tickets.
+- **Reporting Dashboard**: Visual insights into project velocity and task distribution.
+- **Team Management**: Manage team members and roles.
+- **Premium UI**: Polished, responsive design using **Tailwind CSS** and **Radix UI** components.
+
+## 🛠️ Tech Stack
+
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router, Server Actions)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Database**: [SQLite](https://www.sqlite.org/index.html) (via [Prisma ORM](https://www.prisma.io/))
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **State/Drag & Drop**: [@dnd-kit/core](https://dndkit.com/), React Hooks (`useOptimistic`)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+## ⚡ Getting Started
+
+Follow these steps to set up the project locally on your machine.
+
+### Prerequisites
+
+- **Node.js**: v18 or higher
+- **npm**: v9 or higher
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/jira-clone.git
+   cd rtca_final2
+   ```
+
+2. **Install Dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Environment Setup**
+   The project uses SQLite, so no complex DB setup is required. The `DATABASE_URL` is configured in `.env` (default is `file:./dev.db`).
+
+4. **Initialize Database**
+   Run the Prisma migration to create the local SQLite database and generate the client.
+   ```bash
+   npx prisma migrate dev --name init
+   ```
+
+5. **Run the Development Server**
+   ```bash
+   npm run dev
+   ```
+
+   Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## 📂 Project Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+├── 📁 prisma           # Database schema and migrations
+├── 📁 src
+│   ├── 📁 actions      # Server Actions for DB mutations
+│   ├── 📁 app          # Next.js App Router pages
+│   │   ├── 📁 backlog  # Backlog page
+│   │   ├── 📁 reports  # Reports dashboard
+│   │   └── page.tsx    # Main Kanban Board
+│   ├── 📁 components   # React components
+│   │   ├── 📁 Board    # Board-specific components (Column, TaskCard)
+│   │   └── 📁 ui       # Reusable UI components (Dialog, etc.)
+│   └── 📁 lib          # Utilities (Prisma client instance)
+└── tailwind.config.ts  # Tailwind configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🤝 Contributing
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Fork the project
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-## Learn More
+## 📄 License
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
